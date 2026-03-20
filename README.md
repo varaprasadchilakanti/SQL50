@@ -1,14 +1,16 @@
 
 # Crack SQL Interview in 50 Qs — Problem Solving Principles & Architecture Guidelines
 
-This document defines the foundational principles, design philosophies, and coding standards for solving SQL problems in the **SQL 50 Interview Prep** module. It is intended to guide developers and LLMs toward producing elegant, efficient, and extensible SQL solutions in the context of interview preparation and enterprise data systems.
+This repository contains solutions to the **SQL 50 Interview Prep** problems, organized by category. It is both a study resource and a demonstration of clean, production‑grade SQL practices.  
+
+The goal is not just to solve problems, but to **codify principles, design philosophies, and architectural guidelines** that make SQL queries elegant, efficient, and extensible.
 
 ---
 
 ## 1. SQL Design Principles
 
-- **Single Responsibility**: Each query must solve one well‑defined problem (e.g., filtering, aggregation, join).  
-- **Readability First**: Queries should be intention‑revealing, with clear aliases and indentation.  
+- **Single Responsibility**: Each query solves one well‑defined problem.  
+- **Readability First**: Queries are intention‑revealing, with clear aliases and indentation.  
 - **Declarative Style**: Focus on *what* data is needed, not *how* to compute it procedurally.  
 - **Set‑Based Thinking**: Favor set operations over row‑by‑row logic.  
 - **Portability**: Use ANSI SQL where possible; note dialect‑specific features explicitly.  
@@ -17,10 +19,10 @@ This document defines the foundational principles, design philosophies, and codi
 
 ## 2. Clean Architecture for SQL
 
-- Separate **core query logic** from orchestration (scripts, pipelines).  
 - Use **CTEs (Common Table Expressions)** for modularity and readability.  
+- Separate **core query logic** from orchestration (scripts, pipelines).  
 - Keep queries **composable** and **swappable** (e.g., replace aggregation strategy without breaking schema).  
-- Favor **joins and subqueries** over nested procedural constructs.  
+- Favor **joins and subqueries** over procedural constructs.  
 
 ---
 
@@ -35,7 +37,7 @@ This document defines the foundational principles, design philosophies, and codi
 
 ## 4. Extensibility & Testability
 
-- Design queries to handle **edge cases** gracefully (e.g., NULLs, duplicates).  
+- Handle **edge cases** gracefully (NULLs, duplicates, boundary values).  
 - Use **parameterization** for dynamic filtering.  
 - Structure queries for **unit testing** against sample datasets.  
 - Ensure transformations are **traceable** and **auditable**.  
@@ -86,31 +88,47 @@ ORDER BY ...;
 
 ## 8. File Naming & Organization
 
-- Use format: `Q<question_number>_<problem_slug>.sql`  
-- Organize by topic: `select/`, `joins/`, `aggregates/`, `subqueries/`, `advanced/`.  
-- Include `README.md` in each folder with problem summaries and strategy notes.  
+- File format: `Q<question_number>_<problem_slug>.sql`  
+- Organized by LeetCode SQL 50 categories:  
+  - `basic_select/`  
+  - `joins/`  
+  - `basic_aggregate_functions/`  
+  - `sorting_and_grouping/`  
+  - `subqueries/`  
+  - `advanced_select_and_joins/`  
+  - `advanced_string_functions_regex_clause/`  
 
 #### Example Project Structure
 
 ```bash
 SQL50/
-├── select/
-│   ├── Q001_recyclable_low_fat_products.sql
-│   ├── Q002_find_customer_referee.sql
+├── basic_select/
+│   ├── Q1757_recyclable_low_fat_products.sql
+│   ├── Q584_find_customer_referee.sql
 │   └── README.md
 ├── joins/
-│   ├── Q010_basic_joins.sql
-│   ├── Q011_replace_employee_id.sql
+│   ├── Q1068_product_sales_analysis_I.sql
+│   ├── Q1378_replace_employee_id.sql
 │   └── README.md
-├── aggregates/
-│   ├── Q020_average_selling_price.sql
-│   ├── Q021_project_employees.sql
+├── basic_aggregate_functions/
+│   ├── Q251_average_selling_price.sql
+│   ├── Q1075_project_employees_I.sql
+│   └── README.md
+├── sorting_and_grouping/
+│   ├── Q2356_number_of_unique_subjects.sql
+│   ├── Q596_classes_with_at_least_5_students.sql
 │   └── README.md
 ├── subqueries/
 │   ├── Q030_employees_whose_manager_left.sql
+│   ├── Q626_exchange_seats.sql
 │   └── README.md
-├── advanced/
-│   ├── Q040_department_top_three_salaries.sql
+├── advanced_select_and_joins/
+│   ├── Q1204_last_person_to_fit_in_the_bus.sql
+│   ├── Q1789_primary_department_for_each_employee.sql
+│   └── README.md
+├── advanced_string_functions_regex_clause/
+│   ├── Q1667_fix_names_in_a_table.sql
+│   ├── Q196_delete_duplicate_emails.sql
 │   └── README.md
 └── README.md
 ```
@@ -128,4 +146,15 @@ We build SQL workflows that are:
 
 ---
 
-This document is the grounding reference for all SQL problem‑solving workflows in the **SQL 50 Interview Prep** module. Any developer or LLM using this guide is expected to produce solutions that are **production‑grade**, **architecturally sound**, and **developer‑friendly**.  
+## 10. Contribution Guidelines
+
+- Follow the naming convention strictly.  
+- Add a short **problem summary** at the top of each `.sql` file.  
+- Keep commits atomic: one problem per commit.  
+- Use commit messages like:  
+  - `feat: add Q1204 last person to fit in the bus`  
+  - `chore: restructure SQL50 folders`  
+
+---
+
+This document is the **grounding reference** for all SQL problem‑solving workflows in the **SQL 50 Interview Prep** module. Any developer or LLM using this guide is expected to produce solutions that are **production‑grade**, **architecturally sound**, and **developer‑friendly**.  
